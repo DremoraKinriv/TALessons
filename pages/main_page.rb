@@ -3,6 +3,7 @@ class MainPage < SitePrism::Page
 
   element :register_button, '.register'
   element :signin_button, '.login'
+  element :mypage_button, '.my-page'
 
 
 end

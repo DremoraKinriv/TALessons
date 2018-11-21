@@ -3,6 +3,8 @@ class MyAccountPage < SitePrism::Page
 
 
   element :signout_button, '.logout'
+  element :assigned_issues, '#block-issuesassignedtome > h3'
+  element :reported_issues, '#block-issuesreportedbyme > h3'
 
 
 end
