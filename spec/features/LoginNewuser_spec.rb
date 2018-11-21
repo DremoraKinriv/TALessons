@@ -1,14 +1,11 @@
 feature 'Login into Redmine', js: true do
 
-scenario 'user log in into redmine' do
-  @loginpage = LoginPage.new
-  @loginpage.load
+  scenario 'user registration and log in into redmine' do
+    # ! If you add parameter to register (register("some_user")
+    # you need to add the same parametr to signin! (signin("some_user"))
+  register
+  signin
 
-  @loginpage.signin_button.click
-  @loginpage.login_field.set 'Newuser'
-  @loginpage.password_field.set '123456789'
-  @loginpage.login_button.click
-
-  expect(page).to have_content 'Logged in as Newuser'
-end
+  expect(page).to have_content "Logged in as #{login}"
+  end
 end
