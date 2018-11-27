@@ -15,4 +15,5 @@ feature 'Check that my page have correct URL and 0 issues', js: true do
     expect(@my_account_page.assigned_issues).to have_content 'Issues assigned to me (0)'
     expect(@my_account_page.reported_issues).to have_content 'Reported issues (0)'
   end
+
 end

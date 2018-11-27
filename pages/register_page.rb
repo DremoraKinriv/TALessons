@@ -1,4 +1,7 @@
 class RegisterPage < SitePrism::Page
+
+  section :menu, Menu,
+
   set_url "#{$site_url}/account/register"
 
   element :login_field, '#user_login'

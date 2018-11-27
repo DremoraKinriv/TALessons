@@ -7,8 +7,8 @@ module FeatureHelper
     @password ||=  ('0'..'z').to_a.shuffle.first(8).join
   end
   def register(user=login)
-    @main_page = MainPage.new
-    @main_page.load
+    @menu_section = Menu.new
+    @menu_section.load
     @register_page = RegisterPage.new
     @register_page.load
     @my_account_page = MyAccountPage.new
@@ -16,7 +16,7 @@ module FeatureHelper
     @loginpage = LoginPage.new
     @loginpage.load
 
-    @main_page.register_button.click
+    @menu_section.register_button.click
     @register_page.login_field.set user
     @register_page.password_field.set password
     @register_page.confirmation_field.set password
@@ -30,7 +30,7 @@ module FeatureHelper
     @loginpage = LoginPage.new
     @loginpage.load
 
-    @loginpage.signin_button.click
+    @menu_section.signin_button.click
     @loginpage.login_field.set user
     @loginpage.password_field.set password
     @loginpage.login_button.click
