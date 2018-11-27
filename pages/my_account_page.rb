@@ -1,5 +1,5 @@
 class MyAccountPage < SitePrism::Page
-  set_url 'http://10.130.75.208/my/account'
+  set_url "#{$site_url}/my/account"
 
 
   element :signout_button, '.logout'

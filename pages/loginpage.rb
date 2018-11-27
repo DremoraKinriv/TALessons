@@ -1,5 +1,5 @@
 class LoginPage < SitePrism::Page
-  set_url 'http://10.130.75.208'
+  set_url $site_url
 
   element :login_field, '#username'
   element :password_field, '#password'
