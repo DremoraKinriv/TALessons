@@ -1,7 +1,9 @@
 class LoginPage < SitePrism::Page
   set_url $site_url
 
-  section :menu, Menu,
+ require_relative 'menu_section'
+
+  section :menu, Menu, '#top-menu'
 
   element :login_field, '#username'
   element :password_field, '#password'
