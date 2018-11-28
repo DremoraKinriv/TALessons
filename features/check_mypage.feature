@@ -1,7 +1,6 @@
-Feature: Login New User
+Feature: Check if My Page have reported and assigned issues
 
-  Scenario: User register to Redmine page and log in
-
+  Background:
     When I visit Redmine homepage
     And I click Register button
     And I fill Login field
@@ -22,3 +21,11 @@ Feature: Login New User
     And I fill User Password field
     And I click Login button
     Then I see "Logged in as"
+
+  Scenario:  Check if My Page have reported and assigned issues
+    When I visit My Page page
+    And I click My Page button
+    Then I verify if the URL is right
+    And I see "My page"
+    And I see "Issues assigned to me"
+    And I see "Reported issues"

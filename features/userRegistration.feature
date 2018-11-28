@@ -1,6 +1,6 @@
-Feature: Login New User
+Feature: Registration for New User
 
-  Scenario: User register to Redmine page and log in
+  Scenario: User register to Redmine page and log out
 
     When I visit Redmine homepage
     And I click Register button
@@ -16,9 +16,4 @@ Feature: Login New User
     When I click SignOut button
     Then I see "Home"
 
-    When I visit Redmine homepage
-    And I click SignIn button
-    And I fill User Login field
-    And I fill User Password field
-    And I click Login button
-    Then I see "Logged in as"
+    When

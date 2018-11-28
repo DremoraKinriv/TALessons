@@ -1,5 +1,5 @@
 class LoginPage < SitePrism::Page
-  set_url $site_url
+  set_url "#{$site_url}/login"
 
  require_relative 'menu_section'
 
