@@ -6,6 +6,7 @@ feature 'Check that my page have correct URL and 0 issues', js: true do
     @my_account_page.load
 
     register
+    signout
     signin
     expect(page).to have_content "Logged in as #{login}"
     @my_account_page.menu.mypage_button.click

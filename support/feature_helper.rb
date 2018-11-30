@@ -3,9 +3,11 @@ module FeatureHelper
   def login
     @login ||= Time.now.to_i
   end
+
   def password
     @password ||=  ('0'..'z').to_a.shuffle.first(8).join
   end
+
   def register(user=login)
     @register_page = RegisterPage.new
     @register_page.load
@@ -44,3 +46,4 @@ module FeatureHelper
   end
 end
 
+World FeatureHelper

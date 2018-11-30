@@ -1,18 +1,7 @@
-module UserData
-
-  def login
-    @login ||= Time.now.to_i
-  end
-
-  def password
-    @password ||=  ('0'..'z').to_a.shuffle.first(8).join
-  end
-
-end
-
-World UserData
-
-
+# World FeatureHelper
+#
+# user = ""
+# user ||= login
 When(/^I visit Wikipedia homepage$/) do
   visit 'https://en.wikipedia.org'
 end
@@ -42,7 +31,6 @@ And(/^I click Register button$/) do
 end
 
 And (/^I fill Login field$/) do
-
   @register_page = RegisterPage.new
   @register_page.load
 
@@ -51,6 +39,9 @@ And (/^I fill Login field$/) do
 end
 
 And(/^I fill Password field$/) do
+
+  # @register_page = RegisterPage.new
+  # @register_page.load
 
   @register_page.password_field.set password
 

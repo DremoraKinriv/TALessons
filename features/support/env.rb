@@ -1,5 +1,4 @@
 require 'cucumber'
-require 'capybara/rspec'
 require 'capybara/cucumber'
 require 'site_prism'
 require 'require_all'
