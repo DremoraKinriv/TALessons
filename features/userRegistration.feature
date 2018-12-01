@@ -15,3 +15,5 @@ Feature: Registration for New User
 
     When I click SignOut button
     Then I see "Home"
+
+    When I delete user via api
