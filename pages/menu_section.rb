@@ -4,5 +4,8 @@ class Menu < SitePrism::Section
   element :register_button, '.register'
   element :mypage_button, '.my-page'
   element :signout_button, '.logout'
+  element :projects_button, '#top-menu > ul > li:nth-child(3) > a'
+  element :administration_button, '.administration'
+  element :projects_button, '.projects'
 
 end

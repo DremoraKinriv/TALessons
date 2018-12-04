@@ -1,5 +1,3 @@
-Feature: Test
-
-  Scenario: Test
-    When We create user via api
-    When We delete user via api
+Feature: Integration functional testing of Redmine user rights
+  Scenario: Project Admin creates a project assigns a developer to it. Developer completes task and closes it.
+When I register user via Redmine "API"

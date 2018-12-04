@@ -32,15 +32,17 @@ And(/^I click Register button$/) do
 end
 
 And (/^I fill Login field$/) do
-  @register_page.login_field.set login
+  @new_login = login
+  @register_page.login_field.set @new_login
 end
 
 And(/^I fill Password field$/) do
-  @register_page.password_field.set password
+  @new_pass = password
+  @register_page.password_field.set @new_pass
 end
 
 And(/^I fill Password Confirmation field$/) do
-  @register_page.confirmation_field.set password
+  @register_page.confirmation_field.set @new_pass
 end
 
 And(/^I fill First name field$/) do
@@ -52,7 +54,7 @@ And(/^I fill Last name field$/) do
 end
 
 And(/^I fill Email field$/) do
-  @register_page.email_field.set login.to_s + "@gmail.com"
+  @register_page.email_field.set @new_login.to_s + "@gmail.com"
 end
 
 And(/^I click Submit button$/) do
@@ -73,11 +75,11 @@ And(/^I click SignIn button$/) do
 end
 
 And(/^I fill User Login field$/) do
-  @loginpage.login_field.set login
+  @loginpage.login_field.set @new_login
 end
 
 And(/^I fill User Password field$/) do
-  @loginpage.password_field.set password
+  @loginpage.password_field.set @new_pass
 end
 
 When(/^I click My Page button$/) do
