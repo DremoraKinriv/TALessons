@@ -7,6 +7,7 @@ Feature: Integration functional testing of Redmine user rights
     Given I am not logged in visitor
 
     When I register "admin" user via Redmine "UI"
+    And I give him Administrator rights
     Then I see the "admin" user is registered
      And I become logged in as "admin" user
 

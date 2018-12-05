@@ -2,8 +2,7 @@ module APICalls
   def api_headers
     {'Content-Type' => 'application/json', 'X-Redmine-API-Key' => '4ea3eced9e8f6a07e1fe92aaa159f5788a95f86e'}
   end
-
-  def create_user_via_api(create_login=login,create_pass=password)
+  def create_user_via_api(role='admin', create_login=login, create_pass=password)
     payload = {
       'user' => {
         'login' => create_login,
@@ -13,19 +12,27 @@ module APICalls
         'password' => create_pass
       }
     }.to_json
-    puts payload
-
+    # @users = {'login ' => create_login,'password' => create_pass, 'role' => 'developer'}
     RestClient.post("#{$site_url}/users.json", payload, api_headers)
+    # if role == 'developer'
+    #   @dev_user = create_login
+    #   @dev_password = create_pass
+    # elsif role == 'admin'
+    #   @admin_user = create_login
+    #   @admin_password = create_pass
+    # @users[create_login] = create_pass
+    user_cred(role, create_login, create_pass)
+
   end
 
-  def delete_user_via_api(identificator=@new_login)
+  def delete_user_via_api(identificator=@admin_user)
     user_credentials = RestClient.get("#{$site_url}/users.json?name=#{identificator}", api_headers)
     user_id = JSON.parse(user_credentials)['users'][0]['id']
 
     RestClient.delete("#{$site_url}/users/#{user_id}.json", api_headers)
   end
 
-  def create_project_via_api(identificator=@new_login)
+  def create_project_via_api(identificator=@admin_user)
     projects_cred = {
         'project'=> {
             'name' => identificator.to_s,
@@ -35,9 +42,10 @@ module APICalls
     RestClient.post("#{$site_url}/projects.json", projects_cred, api_headers)
   end
 
-  def showing_a_project_via_api(identificator=@new_login)
+  def showing_a_project_via_api(identificator=@admin_user)
     RestClient.get("#{$site_url}/projects/a#{identificator}.json", api_headers)
   end
-end
+  end
+
 
 World APICalls

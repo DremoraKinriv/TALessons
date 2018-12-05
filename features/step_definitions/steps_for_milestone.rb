@@ -13,32 +13,33 @@ Given(/^I am not logged in visitor$/) do
   @projects_page.load
   @new_project_page = NewProjectPage.new
   @new_project_page.load
+  @users_page = UsersPage.new
+  @users_page.load
 
   if @register_page.menu.has_signout_button?
     @register_page.menu.signout_button.click
   end
 end
-
 When(/^I register "([^"]*)" user via Redmine "([^"]*)"$/) do |role, way|
+  if role == "admin" && way == "UI"
+    register
 
-    if role == "admin" && way == "UI"
-      @admin_login = login
-      @admin_pass = password
-      register(@admin_login, @admin_pass)
-      puts @admin_login
-      @register_page.menu.signout_button.click
-      signin(alogin, apassword) # Login as a Administrator
-      @home_page.menu.administration_button.click
-      @administration_page.users_button.click
-      find_link("#{@admin_login}").click
-      check('user[admin]')
-      find_button('Save').click
-    elsif role == "developer" && way == "UI"
-
-      #typetype
-    end
+  elsif role == "developer" && way == "UI"
+    register('developer')
   end
-
+end
+And(/^I give him Administrator rights$/) do
+  @register_page.menu.signout_button.click
+  signin('god') # Login as a Administrator
+  @home_page.menu.administration_button.click
+  @administration_page.users_button.click
+  # if @users_page.has_button_50?
+  #   @users_page.button_50.click
+  # end
+  find_link("#{@admin_user}").click
+  check('user[admin]')
+  find_button('Save').click
+end
 Then(/^I see the "([^"]*)" user is registered$/) do |role|
 
   case role
@@ -71,7 +72,7 @@ Then(/^I see that project is created on "([^"]*)" level$/) do |way|
 
   case way
   when "UI"
-    expect(page).to have_content 'Successful creation'
+    expect(page).to have_content "#{@project_id}"
   when "API"
     showing_a_project_via_api(@project_id)
   end
@@ -190,10 +191,12 @@ When(/^I add  user as a "([^"]*)" member of the project$/) do |role|
   case role
   when 'developer'
 
-    find_button(@project_id.to_s).click
+    find_link(@project_id.to_s).click
     find_button('Settings').click
     find_button('Members').click
     find_button('New member')
 
   end
 end
+
+
