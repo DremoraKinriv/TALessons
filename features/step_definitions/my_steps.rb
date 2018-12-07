@@ -29,18 +29,20 @@ end
 
 And(/^I click Register button$/) do
   @home_page.menu.register_button.click
+  @new_user ||= login
+  @new_password ||= password
 end
 
 And (/^I fill Login field$/) do
-  @register_page.login_field.set @admin_user
+  @register_page.login_field.set @new_user
 end
 
 And(/^I fill Password field$/) do
-  @register_page.password_field.set @admin_password
+  @register_page.password_field.set @new_password
 end
 
 And(/^I fill Password Confirmation field$/) do
-  @register_page.confirmation_field.set @admin_password
+  @register_page.confirmation_field.set @new_password
 end
 
 And(/^I fill First name field$/) do
@@ -52,11 +54,12 @@ And(/^I fill Last name field$/) do
 end
 
 And(/^I fill Email field$/) do
-  @register_page.email_field.set @admin_user.to_s + "@gmail.com"
+  @register_page.email_field.set @new_user.to_s + "@gmail.com"
 end
 
 And(/^I click Submit button$/) do
   @register_page.submit_button.click
+  user_cred('admin',@new_user,@new_password)
 end
 
 When(/^I click SignOut button$/) do

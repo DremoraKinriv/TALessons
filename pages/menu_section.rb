@@ -6,6 +6,6 @@ class Menu < SitePrism::Section
   element :signout_button, '.logout'
   element :projects_button, '#top-menu > ul > li:nth-child(3) > a'
   element :administration_button, '.administration'
-  element :projects_button, '.projects'
+  # element :projects_button, '.projects'
 
 end

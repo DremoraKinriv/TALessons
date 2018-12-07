@@ -2,6 +2,8 @@ Feature: Integration functional testing of Redmine user rights
   As a Redmine user
   I want to be able to create projects, create issues, assign developers to issues, submit time and close issues and projects
   So I can be sure that development life cycle is correctly represented in Redmine
+  Background:
+    When I load all the pages
 
   Scenario: Project Admin creates a project assigns a developer to it. Developer completes task and closes it.
     Given I am not logged in visitor
@@ -9,13 +11,15 @@ Feature: Integration functional testing of Redmine user rights
     When I register "admin" user via Redmine "UI"
     And I give him Administrator rights
     Then I see the "admin" user is registered
-     And I become logged in as "admin" user
+    When I logout
+    And I login as "admin" user
+    Then I become logged in as "admin" user
 
     When I create a project
     Then I see that project is created on "UI" level
      And I see that project is created on "API" level
 
-    When I register user via Redmine "API"
+    When I register "developer" user via Redmine "API"
 
     When I add  user as a "developer" member of the project
     Then I can see "developer" user in the project member list
@@ -44,3 +48,4 @@ Feature: Integration functional testing of Redmine user rights
 
     When I close the project
     Then I see it was successfully closed
+    When I delete all

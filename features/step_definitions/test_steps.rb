@@ -1,6 +1,7 @@
 When(/^I register$/) do
+
   create_user_via_api
-end
+  end
 
 And(/^I login$/) do
   signin

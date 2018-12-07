@@ -4,5 +4,5 @@ Feature: Integration functional testing of Redmine user rights
 #    When I register
 ##    When I register
 # And unlogin
-    When I login
+#    When I login
 
