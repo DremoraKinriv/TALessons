@@ -1,6 +1,6 @@
 module FeatureHelper
 
-  def todays_day
+  def today_date
     @today ||= Time.now.strftime('%m/%d/%Y')
   end
   # Create unique login and password
@@ -12,7 +12,6 @@ module FeatureHelper
   end
   # Store for users credentials
   def user_cred(role='admin', some_login,some_pass)
-
     if role == 'developer'
           @dev_user = some_login
           @dev_password = some_pass
@@ -23,8 +22,6 @@ module FeatureHelper
   end
 
   def register(role='admin', user=login, pass=password)
-    @register_page = RegisterPage.new
-    @register_page.load
 
     @register_page.menu.register_button.click
     @register_page.login_field.set user
@@ -46,34 +43,29 @@ module FeatureHelper
     @apassword = 'ajMnEkvKGit8'
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    @loginpage = LoginPage.new
-    @loginpage.load
-
     @loginpage.menu.signin_button.click
 
     case role
     when 'admin'
-      @loginpage.login_field.set @admin_user
-      @loginpage.password_field.set @admin_password
-      @loginpage.login_button.click
+     login = @admin_user
+     password = @admin_password
     when 'developer'
-      @loginpage.login_field.set @dev_user
-      @loginpage.password_field.set @dev_password
-      @loginpage.login_button.click
+      login = @dev_user
+      password = @dev_password
     when 'god'
-    @loginpage.login_field.set @alogin
-    @loginpage.password_field.set @apassword
-    @loginpage.login_button.click
+      login = @alogin
+      password = @apassword
     end
+    @loginpage.login_field.set login
+    @loginpage.password_field.set password
+    @loginpage.login_button.click
   end
 
   # Sign out with signout button verification
-  def unlogin
-    @register_page = RegisterPage.new
-    @register_page.load
-
+  def signout
     @register_page.menu.signout_button.click
   end
+
 end
 
 World FeatureHelper

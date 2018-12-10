@@ -4,6 +4,10 @@ module APICalls
     {'Content-Type' => 'application/json', 'X-Redmine-API-Key' => '4ea3eced9e8f6a07e1fe92aaa159f5788a95f86e'}
   end
 
+  def showing_a_user_via_api(identificator=@admin_user)
+    RestClient.get("#{$site_url}/users.json?name=#{identificator}", api_headers)
+  end
+
   def create_user_via_api(role='admin', create_login=login, create_pass=password)
     payload = {
       'user' => {

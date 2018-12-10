@@ -9,6 +9,7 @@ class SpentTimePage < SitePrism::Page
   element :date_field, '#time_entry_spent_on'
   element :hours_field, '#time_entry_hours'
   element :create_button, '#new_time_entry > input[type="submit"]:nth-child(6)'
+  element :activity_options, "select[id='time_entry_activity_id']"
 
 
 

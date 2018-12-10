@@ -2,8 +2,6 @@ Feature: Integration functional testing of Redmine user rights
   As a Redmine user
   I want to be able to create projects, create issues, assign developers to issues, submit time and close issues and projects
   So I can be sure that development life cycle is correctly represented in Redmine
-  Background:
-    When I load all the pages
   Scenario: Project Admin creates a project assigns a developer to it. Developer completes task and closes it.
     Given I am not logged in visitor
 

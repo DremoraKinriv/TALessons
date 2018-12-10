@@ -13,7 +13,9 @@ class ProjectOverViewPage < SitePrism::Page
   element :plus_button, '#new-object'
   element :new_issue_button, '#main-menu > ul > li:nth-child(1) > ul > li:nth-child(1) > a'
   element :subject_field, '#issue_subject'
-  element :assignee_options, '#issue_assigned_to_id'
+  element :assignee_options, "select[id='issue_assigned_to_id']"
   element :create_issue_button, '#issue-form > input[type="submit"]:nth-child(4)'
   element :close_project_button, '#content > div.contextual > a.icon.icon-lock'
+  element :new_member_button, '#tab-content-members > p > a'
+
 end

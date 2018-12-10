@@ -8,6 +8,6 @@ class MyAccountPage < SitePrism::Page
 
   element :assigned_issues, '#block-issuesassignedtome > h3'
   element :reported_issues, '#block-issuesreportedbyme > h3'
-
+  element :assigned_issues_link, '#block-issuesassignedtome > h3 > a'
 
 end

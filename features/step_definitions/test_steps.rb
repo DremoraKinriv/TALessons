@@ -1,7 +1,6 @@
 When(/^I register$/) do
 
-  create_user_via_api
-  puts
+  puts showing_a_user_via_api.code
   end
 
 And(/^I login$/) do

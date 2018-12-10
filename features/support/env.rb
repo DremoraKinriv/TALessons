@@ -12,6 +12,7 @@ require_all 'pages'
 
 require_relative 'feature_helper'
 require_relative 'APICalls'
+require_relative 'hooks'
 
 Capybara.default_driver = :selenium
 Capybara.register_driver :selenium do |app|

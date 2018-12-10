@@ -7,5 +7,6 @@ class IssuesPage < SitePrism::Page
   element :logtime_button, '#content > div:nth-child(1) > a.icon.icon-time-add'
   element :edit_button, '#content > div:nth-child(2) > a.icon.icon-edit'
   element :submit_button, '#issue-form > input[type="submit"]:nth-child(7)'
+  element :status_option, 'select[id="issue_status_id"]'
 
 end
