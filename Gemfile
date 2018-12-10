@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'cucumber'
 gem 'capybara'
-gem 'selenium-webdriver'
-gem 'rest-client'
-gem 'site_prism'
+gem 'cucumber'
 gem 'require_all'
+gem 'rest-client'
+gem 'rspec-expectations'
+gem 'selenium-webdriver'
+gem 'site_prism'

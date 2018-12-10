@@ -203,3 +203,7 @@ When(/^I add "([^"]*)" user as a member of the project$/) do |role|
     @project_overview_page.add_button.click
   end
 end
+
+Then(/^i see sign in error$/) do
+  expect(page).to have_content 'Invalid user or password'
+end

@@ -48,4 +48,7 @@ Feature: Integration functional testing of Redmine user rights
 
     When I close the project
     Then I see it was successfully closed
+
     When I delete all
+    And I login as "developer" user
+    Then i see sign in error

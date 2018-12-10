@@ -56,17 +56,14 @@ module FeatureHelper
       @loginpage.login_field.set @admin_user
       @loginpage.password_field.set @admin_password
       @loginpage.login_button.click
-      expect(page).to have_content "Logged in as #{@admin_user}"
     when 'developer'
       @loginpage.login_field.set @dev_user
       @loginpage.password_field.set @dev_password
       @loginpage.login_button.click
-      expect(page).to have_content "Logged in as #{@dev_user}"
     when 'god'
     @loginpage.login_field.set @alogin
     @loginpage.password_field.set @apassword
     @loginpage.login_button.click
-    expect(page).to have_content "Logged in as #{@alogin}"
     end
   end
 
