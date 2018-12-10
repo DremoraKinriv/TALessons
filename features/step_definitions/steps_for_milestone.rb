@@ -47,10 +47,19 @@ And(/^I give him Administrator rights$/) do
   find_button('Save').click
 end
 
-Then(/^I see the "([^"]*)" user is registered$/) do |role|
+Then(/^I see the "([^"]*)" user is updated$/) do |role|
   case role
   when 'admin'
     expect(page).to have_content 'Successful update'
+  when 'developer'
+    # We can create developer only when we assign him to a project
+  end
+end
+
+Then(/^I see the "([^"]*)" user is registered$/) do |role|
+  case role
+  when 'admin'
+    expect(page).to have_content 'Your account has been activated. You can now log in.'
   when 'developer'
     # We can create developer only when we assign him to a project
   end
@@ -73,6 +82,7 @@ When(/^I create a project$/) do
   @projects_page.new_project_button.click
   @new_project_page.project_name_field.set @project_id
   @new_project_page.identifier_field.set @project_id
+  check('Bug')
   @new_project_page.create_project_button.click
   @new_project_page.menu.projects_button.click
 end
@@ -128,7 +138,6 @@ end
 
 When(/^I login as "([^"]*)" user$/) do |role|
   signin(role)
-
 end
 
 When(/^I track time for the assigned issue$/) do
@@ -175,7 +184,13 @@ When(/^I create project via api$/) do
   create_project_via_api
 end
 
-When(/^I add  user as a "([^"]*)" member of the project$/) do |role|
+When(/^I delete all$/) do
+  delete_user_via_api(@admin_user)
+  delete_user_via_api(@dev_user)
+  deleting_project_via_api(@project_id)
+end
+
+When(/^I add "([^"]*)" user as a member of the project$/) do |role|
   case role
   when 'developer'
     find_link(@project_id.to_s).click
@@ -187,10 +202,4 @@ When(/^I add  user as a "([^"]*)" member of the project$/) do |role|
     check('Developer')
     @project_overview_page.add_button.click
   end
-end
-
-When(/^I delete all$/) do
-  delete_user_via_api(@admin_user)
-  delete_user_via_api(@dev_user)
-  deleting_project_via_api(@project_id)
 end

@@ -1,5 +1,4 @@
 
-# user = login
 
 When(/^I visit Wikipedia homepage$/) do
   visit 'https://en.wikipedia.org'
@@ -59,7 +58,7 @@ end
 
 And(/^I click Submit button$/) do
   @register_page.submit_button.click
-  user_cred('admin',@new_user,@new_password)
+  user_cred('admin', @new_user,@new_password)
 end
 
 When(/^I click SignOut button$/) do

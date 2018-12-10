@@ -40,10 +40,11 @@ module FeatureHelper
 
   def signin(role='admin')
 
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Administrator login and password
     @alogin = 'user'
     @apassword = 'ajMnEkvKGit8'
-    #---------------------------
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     @loginpage = LoginPage.new
     @loginpage.load
