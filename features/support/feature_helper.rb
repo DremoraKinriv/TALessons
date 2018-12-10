@@ -50,6 +50,7 @@ module FeatureHelper
     @loginpage.load
 
     @loginpage.menu.signin_button.click
+
     case role
     when 'admin'
       @loginpage.login_field.set @admin_user
